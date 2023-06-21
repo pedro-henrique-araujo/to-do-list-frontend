@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToDoListService } from '../service/to-do-list.service';
 import { Pagination } from '../interface/pagination';
 import { ToDoList } from '../interface/to-do-list';
-import { environment } from '../environment/environment';
+import { environment } from '../../environment/environment';
 
 @Component({
   selector: 'app-home',
