@@ -1,0 +1,36 @@
+<ul>
+  <li
+    *ngFor="let toDo of toDos; let i = index"
+    (mouseover)="checkAsFocused(i)"
+    (mouseleave)="uncheckAsFocused(i)"
+  >
+    <input type="checkbox" [(ngModel)]="toDo.done" />
+    <input
+      class="title-input"
+      type="text"
+      (keydown)="handleKeyDown($event, i)"
+      [(ngModel)]="toDo.title"
+    />
+    <button type="button" class="remove-button" (click)="remove(i)">
+      remove
+    </button>
+    <app-tree-check-list
+      addItemPlaceholder="sub item..."
+      [showAddItemInput]="i === focusedIndex"
+      [toDos]="toDo.toDos"
+      (ascendToDo)="handleToDoAscending($event, i)"
+    ></app-tree-check-list>
+  </li>
+  <div class="add-item-input">
+    <li *ngIf="showAddItemInput">
+      <input type="checkbox" [(ngModel)]="itemToAdd.done" />
+      <input
+        type="text"
+        [(ngModel)]="itemToAdd.title"
+        (blur)="addItem()"
+        (keyup.enter)="addItem()"
+        [placeholder]="addItemPlaceholder"
+      />
+    </li>
+  </div>
+</ul>

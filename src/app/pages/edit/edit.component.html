@@ -1,0 +1,39 @@
+<button [routerLink]="['/']">go back</button>
+<button (click)="save()" *ngIf="toDoList.title.length">
+  save{{ this.dirty ? " * " : "" }}
+</button>
+<span *ngIf="showDeleteButtonFeature()">
+  <button
+    (click)="askForConfirmationToDelete()"
+    *ngIf="askConfirmationToDelete == false; else confirmationToDelete"
+  >
+    delete
+  </button>
+</span>
+<form (keyup)="notifyChange()">
+  <div>
+    <input
+      class="title-input"
+      [(ngModel)]="toDoList.title"
+      type="text"
+      name="title"
+      placeholder="task name..."
+    />
+    <app-tree-check-list [toDos]="toDoList.toDos"></app-tree-check-list>
+  </div>
+</form>
+
+<ng-template #confirmationToDelete>
+  <button (click)="delete()">click to confirm</button>
+</ng-template>
+
+<div class="commands">
+  <p>commands:</p>
+
+  <ul>
+    <li>move in = ctrl + &rightarrow;</li>
+    <li>move out = ctrl + &leftarrow;</li>
+    <li>move up = ctrl + &uparrow;</li>
+    <li>move down = ctrl + &downarrow;</li>
+  </ul>
+</div>

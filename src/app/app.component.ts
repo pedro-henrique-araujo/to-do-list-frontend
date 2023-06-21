@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from './service/user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  title = 'to-do-list-frontend';
+export class AppComponent implements OnInit {
+  userId!: string;
+  constructor(private userService: UserService) {}
+
+  async ngOnInit() {
+    this.userId = await this.userService.loadAndReturnUserId();
+  }
 }

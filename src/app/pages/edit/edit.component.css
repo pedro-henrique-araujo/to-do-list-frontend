@@ -1,0 +1,14 @@
+form {
+  margin-top: 30px;
+  min-height: 300px;
+}
+
+.title-input {
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.commands {
+  margin-top: 100px;
+}

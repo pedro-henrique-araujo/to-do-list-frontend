@@ -1,0 +1,14 @@
+.add-item-input:not(:has(input:focus)) {
+  opacity: 0.3;
+}
+
+.remove-button {
+  margin-left: 5px;
+}
+
+
+.title-input {
+  font-size: 12px;
+  border: none;
+  border-bottom: 1px solid black;
+}

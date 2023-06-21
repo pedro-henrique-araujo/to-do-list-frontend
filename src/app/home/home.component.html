@@ -1,0 +1,21 @@
+<div class="top-action-buttons">
+  <button [routerLink]="['/edit']">new</button>
+  <button (click)="load()">reload</button>
+</div>
+
+<div *ngIf="pagination?.items?.length, else noItems">
+  <ul>
+    <li  *ngFor="let item of pagination?.items">
+      {{
+        item.title
+      }}
+      <button [routerLink]="['/edit', item.id]">edit</button>
+      <button (click)="share(item.id)">{{recordCopiedToClipboard === item.id ? 'link copied':'share'}}</button>
+    </li>
+  </ul>
+
+</div>
+
+<ng-template #noItems>
+  <p>Click <strong>new</strong> to add a to-do list!</p>
+</ng-template>
